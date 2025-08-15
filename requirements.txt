@@ -1,0 +1,7 @@
+flask
+requests
+httpx
+fastapi
+pycryptodome
+protobuf_decoder
+gunicorn
