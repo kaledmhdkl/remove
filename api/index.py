@@ -1,6 +1,7 @@
+# api/remove_friend.py
 from flask import Flask, request, jsonify
 import requests
-from byte import Encrypt_ID, encrypt_api  # تأكد وجود byte.py بنفس المسار أو أعلى
+from byte import Encrypt_ID, encrypt_api  # تأكد وجود byte.py بنفس المسار
 
 app = Flask(__name__)
 
@@ -45,4 +46,10 @@ def remove_friend():
 
 @app.route('/favicon.ico')
 def favicon():
-    return '', 204  
+    return '', 204
+
+# هذه السطر مهم لتحويل Flask إلى Serverless Function على Vercel
+from vercel_wsgi import handle_wsgi
+def handler(request, context):
+    return handle_wsgi(app, request, context)
+  
